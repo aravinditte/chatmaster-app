@@ -9,7 +9,7 @@ const axiosInstance = axios.create({
   },
 });
 
-// Request interceptor to add auth token
+// Request interceptor
 axiosInstance.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('token');
@@ -23,12 +23,11 @@ axiosInstance.interceptors.request.use(
   }
 );
 
-// Response interceptor to handle errors
+// Response interceptor
 axiosInstance.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response?.status === 401) {
-      // Token expired or invalid
       localStorage.removeItem('token');
       window.location.href = '/';
     }
