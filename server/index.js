@@ -157,6 +157,30 @@ app.get('/health', (req, res) => {
     res.json(healthCheck);
 });
 
+// Root endpoint - Welcome message
+app.get('/', (req, res) => {
+    res.json({
+        name: 'ChatMaster API',
+        version: '1.0.0',
+        status: 'running',
+        message: 'Welcome to ChatMaster API',
+        frontend: 'https://chatmaster.vercel.app',
+        documentation: {
+            health: `${req.protocol}://${req.get('host')}/health`,
+            apiDocs: `${req.protocol}://${req.get('host')}/api`,
+        },
+        endpoints: [
+            'POST /api/auth/register',
+            'POST /api/auth/login',
+            'GET /api/chats',
+            'GET /api/messages/:chatId',
+            'POST /api/friend-requests/send',
+            'GET /health'
+        ],
+        note: 'This is a backend API. Visit the frontend URL to use the app.'
+    });
+});
+
 // API documentation endpoint
 app.get('/api', (req, res) => {
     res.json({
