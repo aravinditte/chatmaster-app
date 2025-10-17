@@ -1,0 +1,33 @@
+{
+  "name": "chatmaster-app",
+  "version": "1.0.0",
+  "description": "Full-stack real-time chat application",
+  "private": true,
+  "scripts": {
+    "install:all": "npm install && cd server && npm install && cd ../client && npm install && cd ../mobile && npm install",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd server && npm run dev",
+    "client": "cd client && npm start",
+    "mobile": "cd mobile && expo start",
+    "build": "cd client && npm run build",
+    "test": "cd server && npm test && cd ../client && npm test",
+    "deploy": "cd client && npm run build && cd ../server && npm run deploy"
+  },
+  "keywords": [
+    "chat",
+    "realtime",
+    "socket.io",
+    "react",
+    "react-native",
+    "messaging",
+    "webrtc"
+  ],
+  "author": "Itte Aravind",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1"
+  }
+}

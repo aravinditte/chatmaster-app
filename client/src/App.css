@@ -1,0 +1,20 @@
+.App {
+  min-height: 100vh;
+}
+
+/* Prevent text selection in chat UI */
+.chat-container {
+  user-select: none;
+}
+
+/* Allow text selection in messages */
+.message-content {
+  user-select: text;
+}
+
+/* Smooth transitions */
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
